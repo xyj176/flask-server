@@ -22,16 +22,18 @@ def create_app(config):
     # 读取配置
     app.config.from_object(config)
     # app.config.from_envvar('', silent=True)  # 通过环境变量读取配置
+
+    # 添加日志
+    app.logger.addHandler(log.getLogHandler())
+    # 注册blueprint,blueprint里面也有接口函数
+    app.register_blueprint(user_blue)
+    app.register_blueprint(admin_blue)
+
     return app
 
 
 # 创建app
 app = create_app(Config)
-# 添加日志
-app.logger.addHandler(log.getLogHandler())
-# 注册blueprint,blueprint里面也有接口函数
-app.register_blueprint(user_blue)
-app.register_blueprint(admin_blue)
 
 
 @app.route('/')
