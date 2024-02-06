@@ -7,10 +7,13 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 14:37 
 """
-from flask import Flask, current_app
+from .config.config import Config
+from .util import log
+from .flask_overwrite import Flask
+from flask import current_app
 
-import logHandler
-from config import Config
+
+from server.util.response import JsonResponse
 
 
 def create_app(config):
@@ -22,16 +25,16 @@ def create_app(config):
 
 
 app = create_app(Config)
-app.logger.addHandler(logHandler.getLogHandler())
+app.logger.addHandler(log.getLogHandler())
 
 
 @app.route('/')
 def hello():
     current_app.logger.info('hello')
-    return 'hello'
+    return JsonResponse.success('hello')
 
 
 @app.route('/config')
 def get_config():
     current_app.logger.info('get_config')
-    return app.config.get('SECRET_KEY')
+    return JsonResponse.success(app.config.get('SECRET_KEY'))

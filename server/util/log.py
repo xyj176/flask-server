@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：flask-server 
-@File    ：logHandler.py
+@File    ：log.py
 @IDE     ：PyCharm 
 @Author  ：xuyj
 @Date    ：2024/2/6 14:54 
@@ -14,16 +14,12 @@ import logging
 import time
 from logging.handlers import RotatingFileHandler
 
-
-def make_dir(make_dir_path):
-    path = make_dir_path.strip()
-    if not os.path.exists(path):
-        os.makedirs(path)
+from server.util.path import make_dir
 
 
 def getLogHandler():
     # 日志地址
-    log_dir_name = "Logs"
+    log_dir_name = "../../Logs"
     # 文件名，以日期作为文件名
     log_file_name = 'logger-' + time.strftime('%Y-%m-%d', time.localtime(time.time())) + '.log'
     # 创建日志文件
