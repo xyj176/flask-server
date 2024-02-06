@@ -1,0 +1,10 @@
+# 不需要提交的目录
+/.idea
+/__pycache__
+/log
+/logs
+/Log
+/Logs
+
+# 不需要提交的文件
+*.log
