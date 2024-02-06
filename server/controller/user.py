@@ -7,11 +7,10 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 15:18 
 """
-from flask import Blueprint, current_app
+from flask import current_app
 
+from server.controller import user_blue
 from server.util.response import JsonResponse
-
-user_blue = Blueprint(name='user', import_name=__name__, url_prefix='/user')
 
 
 # 请求地址：ip+port+/user/register

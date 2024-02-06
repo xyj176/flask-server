@@ -7,3 +7,12 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 15:17 
 """
+from flask import Blueprint
+
+# 定义蓝图
+admin_blue = Blueprint(name='admin', import_name=__name__, url_prefix='/admin')
+user_blue = Blueprint(name='user', import_name=__name__, url_prefix='/user')
+
+# 引入相应的子模块，让其内部的接口函数生效
+from . import admin
+from . import user

@@ -7,11 +7,10 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 15:18 
 """
-from flask import Blueprint, current_app
+from flask import current_app
 
+from server.controller import admin_blue
 from server.util.response import JsonResponse
-
-admin_blue = Blueprint(name='admin', import_name=__name__, url_prefix='/admin')
 
 
 @admin_blue.route('/alluser')

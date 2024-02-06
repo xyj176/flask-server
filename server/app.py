@@ -8,8 +8,8 @@
 @Date    ：2024/2/6 14:37 
 """
 from .config.config import Config
-from .controller.admin import admin_blue
-from .controller.user import user_blue
+from .controller import admin_blue
+from .controller import user_blue
 from .util import log
 from .flask_overwrite import Flask
 from flask import current_app
