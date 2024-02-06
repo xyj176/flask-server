@@ -14,7 +14,6 @@ from .util import log
 from .flask_overwrite import Flask
 from flask import current_app
 
-
 from server.util.response import JsonResponse
 
 
@@ -26,8 +25,11 @@ def create_app(config):
     return app
 
 
+# 创建app
 app = create_app(Config)
+# 添加日志
 app.logger.addHandler(log.getLogHandler())
+# 注册blueprint,blueprint里面也有接口函数
 app.register_blueprint(user_blue)
 app.register_blueprint(admin_blue)
 
