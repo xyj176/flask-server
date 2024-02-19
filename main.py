@@ -11,4 +11,6 @@
 from server.app import app
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5050)
+    host = app.config.get('HOST')
+    port = app.config.get('PORT')
+    app.run(host=host, port=port)

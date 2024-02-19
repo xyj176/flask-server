@@ -7,7 +7,7 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 14:37 
 """
-from .config.config import Config
+from .config.default_config import Config
 from .controller import admin_blue
 from .controller import user_blue
 from .util import log
