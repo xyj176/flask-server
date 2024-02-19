@@ -34,3 +34,4 @@ configData = yaml.load(client.get_config(data_id, group), Loader=yaml.FullLoader
 # 打印配置信息
 print(configData, type(configData))
 
+from .default_config import Config

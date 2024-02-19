@@ -7,14 +7,12 @@
 @Author  ：xuyj
 @Date    ：2024/2/6 14:37 
 """
-from .config.default_config import Config
+from .config import Config
 from .controller import admin_blue
 from .controller import user_blue
-from .util import log
 from .flask_overwrite import Flask
 from flask import current_app
-
-from server.util.response import JsonResponse
+from .util import getLogHandler, JsonResponse
 
 
 def create_app(config):
@@ -24,7 +22,7 @@ def create_app(config):
     # app.config.from_envvar('', silent=True)  # 通过环境变量读取配置
 
     # 添加日志
-    app.logger.addHandler(log.getLogHandler())
+    app.logger.addHandler(getLogHandler())
     # 注册blueprint,blueprint里面也有接口函数
     app.register_blueprint(user_blue)
     app.register_blueprint(admin_blue)
