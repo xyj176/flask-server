@@ -13,16 +13,21 @@ from .controller import user_blue
 from .flask_overwrite import Flask
 from flask import current_app
 from .util import getLogHandler, JsonResponse
+from .model import db, User
 
 
 def create_app(config):
     app = Flask(__name__)
     # 读取配置
     app.config.from_object(config)
-    # app.config.from_envvar('', silent=True)  # 通过环境变量读取配置
-
+    # 激活上下文
+    app_context = app.app_context()
+    app_context.push()
     # 添加日志
     app.logger.addHandler(getLogHandler())
+    # 初始化数据库
+    db.init_app(app)
+    db.create_all()
     # 注册blueprint,blueprint里面也有接口函数
     app.register_blueprint(user_blue)
     app.register_blueprint(admin_blue)
