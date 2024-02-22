@@ -8,8 +8,7 @@
 @Date    ：2024/2/6 14:37 
 """
 from .config import Config
-from .controller import admin_blue
-from .controller import user_blue
+from .controller import admin_blue, upload_blue, user_blue
 from .flask_overwrite import Flask
 from flask import current_app
 from .util import getLogHandler, JsonResponse
@@ -31,6 +30,7 @@ def create_app(config):
     # 注册blueprint,blueprint里面也有接口函数
     app.register_blueprint(user_blue)
     app.register_blueprint(admin_blue)
+    app.register_blueprint(upload_blue)
 
     return app
 

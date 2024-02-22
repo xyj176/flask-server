@@ -11,7 +11,7 @@ from flask import current_app, request
 
 from server.controller import user_blue
 from server.model import User, db
-from server.util.response import JsonResponse
+from server.util import JsonResponse
 
 
 # 请求地址：ip+port+/user/register
