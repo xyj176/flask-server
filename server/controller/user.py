@@ -48,7 +48,7 @@ def login():
 @user_blue.route('/modify_pw')
 def modify_pw():
     current_app.logger.info('/user/modify_pw')
-    # todo 修改密码
+    # 修改密码
     name = request.args.get('name')
     query = User.query.filter_by(name=name).first()
     if query is None:
